@@ -5,26 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.7</version>
+		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kyleerhabor</groupId>
-	<artifactId>cs363</artifactId>
+	<artifactId>su-cs363-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cs363</name>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<name>su-cs363-project</name>
 	<properties>
 		<java.version>25</java.version>
 	</properties>
@@ -58,7 +45,6 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -67,5 +53,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

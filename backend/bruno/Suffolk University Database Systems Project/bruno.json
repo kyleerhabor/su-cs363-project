@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Suffolk University Database Systems Project",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base-url}}/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "system",
+    "name": "System"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

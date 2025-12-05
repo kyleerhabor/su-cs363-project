@@ -1,4 +1,4 @@
-package com.kyleerhabor.cs363;
+package com.kyleerhabor.su_cs363_project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
