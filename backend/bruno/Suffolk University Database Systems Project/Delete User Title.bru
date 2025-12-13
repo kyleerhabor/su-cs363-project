@@ -1,0 +1,27 @@
+meta {
+  name: Delete User Title
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{base-url}}/users/titles/:user-title
+  body: json
+  auth: inherit
+}
+
+params:path {
+  user-title: 21b80f27-751b-454b-a441-749e1322c28e
+}
+
+body:json {
+  {
+    "title": "a80706eb-4f9b-4ebe-a625-b7306d85b87f",
+    "isFavorite": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

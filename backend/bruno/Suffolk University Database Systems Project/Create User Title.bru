@@ -1,0 +1,27 @@
+meta {
+  name: Create User Title
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{base-url}}/users/:user/titles
+  body: json
+  auth: inherit
+}
+
+params:path {
+  user: 736dda83-dae9-4e88-8b2a-6063b2b64a5a
+}
+
+body:json {
+  {
+    "title": "a80706eb-4f9b-4ebe-a625-b7306d85b87f",
+    "isFavorite": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

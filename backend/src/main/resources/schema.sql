@@ -1,8 +1,41 @@
+CREATE TABLE titles (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  uuid VARCHAR(36) NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT NOT NULL,
+
+  PRIMARY KEY (id),
+  UNIQUE KEY (uuid)
+);
+
 CREATE TABLE users (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  uuid CHAR(36) NOT NULL UNIQUE,
-  username VARCHAR(512) NOT NULL UNIQUE,
+  uuid VARCHAR(36) NOT NULL,
+  username VARCHAR(255) NOT NULL,
   name TEXT NOT NULL,
 
-  PRIMARY KEY(id)
+  PRIMARY KEY (id),
+  UNIQUE KEY (uuid),
+  UNIQUE KEY (username)
+);
+
+CREATE TABLE user_titles (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  uuid VARCHAR(36) NOT NULL,
+  title INT UNSIGNED NOT NULL, -- This should probably be a junction table, but...
+  is_favorite BOOLEAN NOT NULL,
+
+  PRIMARY KEY (id),
+  UNIQUE KEY (uuid),
+  FOREIGN KEY (title) REFERENCES titles(id) ON DELETE CASCADE
+);
+
+CREATE TABLE title_users (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user INT UNSIGNED NOT NULL,
+  title INT UNSIGNED NOT NULL,
+
+  PRIMARY KEY (id),
+  FOREIGN KEY (user) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (title) REFERENCES user_titles(id) ON DELETE CASCADE
 )

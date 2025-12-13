@@ -6,7 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import { UserProvider } from "./components";
 import "./app.css";
 
 export const links = () => [
@@ -32,7 +32,9 @@ export function Layout({ children }) {
         <Links />
       </head>
       <body>
-        {children}
+        <UserProvider>
+          {children}
+        </UserProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
