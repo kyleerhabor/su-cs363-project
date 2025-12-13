@@ -4,15 +4,14 @@ import { SimpleUserName } from "./UserName";
 import { API_URL, UserContext } from "../components";
 import { ROUTE_PATH_SIGNUP, ROUTE_PATH_LOGIN_SUCCESS } from "../routes";
 
-function login({ formData, data, setUser, navigate }) {
+function login({ formData, setUser, navigate }) {
   const user = formData.get("user");
 
   if (user === null) {
     return;
   }
 
-  const u = data.users.find((u) => u.id === user);
-  setUser(u);
+  setUser(user);
   navigate(ROUTE_PATH_LOGIN_SUCCESS);
 }
 
@@ -50,7 +49,7 @@ function LoginForm() {
 
   return (
     <div>
-      <form className="form-grid" action={(formData) => login({ formData, data, setUser, navigate })}>
+      <form className="form-grid" action={(formData) => login({ formData, setUser, navigate })}>
         <label htmlFor="login-user">Login as:</label>
         <select id="login-user" name="user">
           {data.users.map((user) => (

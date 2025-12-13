@@ -30,21 +30,16 @@ async function signup({ formData, navigate, setUser, setCode }) {
 
   const [ok, data] = res;
 
-  if (ok) {
-    // This should probably be extracted.
-    setUser({
-      id: data.id,
-      username: username,
-      name: name,
-    });
-
-    setCode(null);
-    navigate(ROUTE_PATH_SIGNUP_SUCCESS);
+  if (!ok) {
+    setUser(null);
+    setCode(data.code);
 
     return;
   }
 
-  setCode(data.code);
+  setUser(data.id);
+  setCode(null);
+  navigate(ROUTE_PATH_SIGNUP_SUCCESS);
 }
 
 function SignupErrorUsernameExists({ code }) {

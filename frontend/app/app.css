@@ -28,15 +28,11 @@ html, body {
   margin-inline-end: 8px;
 }
 
-.title-description {
-  white-space: pre-line;
-}
-
-.title-contents {
+.titles {
   list-style: none;
   padding-inline-start: 0;
 }
 
-.title-content-synopsis {
+.title-description {
   white-space: pre-line;
 }

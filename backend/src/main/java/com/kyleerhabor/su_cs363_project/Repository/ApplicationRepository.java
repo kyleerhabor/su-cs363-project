@@ -138,7 +138,7 @@ public class ApplicationRepository {
         titles.description AS user_title_title_description
       FROM users
       LEFT JOIN title_users ON title_users.user = users.id
-      LEFT JOIN user_titles ON user_titles.title = title_users.title
+      LEFT JOIN user_titles ON user_titles.id = title_users.title
       LEFT JOIN titles ON titles.id = user_titles.title
       """;
 
@@ -169,7 +169,7 @@ public class ApplicationRepository {
         titles.description AS user_title_title_description
       FROM users
       LEFT JOIN title_users ON title_users.user = users.id
-      LEFT JOIN user_titles ON user_titles.title = title_users.title
+      LEFT JOIN user_titles ON user_titles.id = title_users.title
       LEFT JOIN titles ON titles.id = user_titles.title
       WHERE users.uuid = :uuid
       """;

@@ -15,6 +15,7 @@ import com.kyleerhabor.su_cs363_project.Service.Model.UserTitleServiceModel;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,25 +75,54 @@ public class ApplicationService {
     final var items = repository.findUsers();
     final var users = items
       .stream()
-      .map((item2) -> new UserServiceModel(
-        UUID.fromString(item2.userUUID()),
-        item2.userUsername(),
-        item2.userName(),
-        items
-          .stream()
-          .filter((item3) -> item3.userTitleUUID() != null && item3.userUUID() == item2.userUUID())
-          .map((item3) -> new UserTitleServiceModel(
-            UUID.fromString(item3.userTitleUUID()),
-            new TitleServiceModel(
-              UUID.fromString(item3.userTitleTitleUUID()),
-              item3.userTitleTitleName(),
-              item3.userTitleTitleDescription()
-            ),
-            item3.userTitleIsFavorite()
-          ))
-          .toList()
-      ))
+      .collect(Collectors.groupingBy((item) -> item.userUUID()))
+      .values()
+      .stream()
+      .map((items2) -> {
+        final var item = items2.getFirst();
+
+        return new UserServiceModel(
+          UUID.fromString(item.userUUID()),
+          item.userUsername(),
+          item.userName(),
+          items2
+            .stream()
+            .filter((item3) -> item3.userTitleUUID() != null)
+            .map((item3) -> new UserTitleServiceModel(
+              UUID.fromString(item3.userTitleUUID()),
+              new TitleServiceModel(
+                UUID.fromString(item3.userTitleTitleUUID()),
+                item3.userTitleTitleName(),
+                item3.userTitleTitleDescription()
+              ),
+              item3.userTitleIsFavorite()
+            ))
+            .toList()
+          );
+      })
       .toList();
+
+    // final var users = items
+    //   .stream()
+    //   .map((item2) -> new UserServiceModel(
+    //     UUID.fromString(item2.userUUID()),
+    //     item2.userUsername(),
+    //     item2.userName(),
+    //     items
+    //       .stream()
+    //       .filter((item3) -> item3.userTitleUUID() != null && item3.userUUID() == item2.userUUID())
+    //       .map((item3) -> new UserTitleServiceModel(
+    //         UUID.fromString(item3.userTitleUUID()),
+    //         new TitleServiceModel(
+    //           UUID.fromString(item3.userTitleTitleUUID()),
+    //           item3.userTitleTitleName(),
+    //           item3.userTitleTitleDescription()
+    //         ),
+    //         item3.userTitleIsFavorite()
+    //       ))
+    //       .toList()
+    //   ))
+    //   .toList();
 
     return users;
   }
