@@ -1,4 +1,4 @@
-import { SignupSuccess } from "../components/SignupSuccess";
+import { SignedUp } from "../components/SignedUp";
 
 export function meta() {
   return [
@@ -7,5 +7,5 @@ export function meta() {
 }
 
 export default function Component() {
-  return <SignupSuccess />;
+  return <SignedUp />;
 }

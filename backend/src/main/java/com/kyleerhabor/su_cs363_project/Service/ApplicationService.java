@@ -102,28 +102,6 @@ public class ApplicationService {
       })
       .toList();
 
-    // final var users = items
-    //   .stream()
-    //   .map((item2) -> new UserServiceModel(
-    //     UUID.fromString(item2.userUUID()),
-    //     item2.userUsername(),
-    //     item2.userName(),
-    //     items
-    //       .stream()
-    //       .filter((item3) -> item3.userTitleUUID() != null && item3.userUUID() == item2.userUUID())
-    //       .map((item3) -> new UserTitleServiceModel(
-    //         UUID.fromString(item3.userTitleUUID()),
-    //         new TitleServiceModel(
-    //           UUID.fromString(item3.userTitleTitleUUID()),
-    //           item3.userTitleTitleName(),
-    //           item3.userTitleTitleDescription()
-    //         ),
-    //         item3.userTitleIsFavorite()
-    //       ))
-    //       .toList()
-    //   ))
-    //   .toList();
-
     return users;
   }
 

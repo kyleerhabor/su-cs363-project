@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../components";
 import { useNavigate } from "react-router";
-import { ROUTE_PATH_HOME, ROUTE_PATH_LOGOUT_SUCCESS } from "../routes";
+import { ROUTE_PATH_HOME, ROUTE_PATH_LOGGED_OUT } from "../routes";
 
 function logout({ setUser, navigate }) {
   setUser(null);
-  navigate(ROUTE_PATH_LOGOUT_SUCCESS);
+  navigate(ROUTE_PATH_LOGGED_OUT);
 }
 
 export function Logout() {

@@ -1,4 +1,4 @@
-import { LoginSuccess } from "../components/LoginSuccess";
+import { LoggedIn } from "../components/LoggedIn";
 
 export function meta() {
   return [
@@ -7,5 +7,5 @@ export function meta() {
 }
 
 export default function Component() {
-  return <LoginSuccess />;
+  return <LoggedIn />;
 }

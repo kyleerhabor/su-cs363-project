@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import { API_URL, UserContext } from "../components";
-import { ROUTE_PATH_SIGNUP_SUCCESS } from "../routes";
+import { ROUTE_PATH_SIGNED_UP } from "../routes";
 import "../app.css";
 
 async function signup({ formData, navigate, setUser, setCode }) {
@@ -39,7 +39,7 @@ async function signup({ formData, navigate, setUser, setCode }) {
 
   setUser(data.id);
   setCode(null);
-  navigate(ROUTE_PATH_SIGNUP_SUCCESS);
+  navigate(ROUTE_PATH_SIGNED_UP);
 }
 
 function SignupErrorUsernameExists({ code }) {

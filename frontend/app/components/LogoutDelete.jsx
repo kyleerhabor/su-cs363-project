@@ -7,7 +7,7 @@ async function deleteUser({ user, setUser, navigate }) {
   let response;
 
   try {
-    response = await fetch(`${API_URL}/users/${user.id}`, { method: "DELETE" });
+    response = await fetch(`${API_URL}/users/${user}`, { method: "DELETE" });
   } catch (error) {
     console.error(error);
 

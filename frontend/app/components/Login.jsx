@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router";
 import { SimpleUserName } from "./UserName";
 import { API_URL, UserContext } from "../components";
-import { ROUTE_PATH_SIGNUP, ROUTE_PATH_LOGIN_SUCCESS } from "../routes";
+import { ROUTE_PATH_SIGNUP, ROUTE_PATH_LOGGED_IN } from "../routes";
 
 function login({ formData, setUser, navigate }) {
   const user = formData.get("user");
@@ -12,7 +12,7 @@ function login({ formData, setUser, navigate }) {
   }
 
   setUser(user);
-  navigate(ROUTE_PATH_LOGIN_SUCCESS);
+  navigate(ROUTE_PATH_LOGGED_IN);
 }
 
 function LoginForm() {

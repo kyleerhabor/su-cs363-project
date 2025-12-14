@@ -36,6 +36,7 @@ CREATE TABLE title_users (
   title INT UNSIGNED NOT NULL,
 
   PRIMARY KEY (id),
+  UNIQUE KEY (title),
   FOREIGN KEY (user) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (title) REFERENCES user_titles(id) ON DELETE CASCADE
-)
+);

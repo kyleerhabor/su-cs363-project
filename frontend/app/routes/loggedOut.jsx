@@ -1,4 +1,4 @@
-import { LogoutSuccess } from "../components/LogoutSuccess";
+import { LoggedOut } from "../components/LoggedOut";
 
 export function meta({}) {
   return [
@@ -7,5 +7,5 @@ export function meta({}) {
 }
 
 export default function Component() {
-  return <LogoutSuccess />;
+  return <LoggedOut />;
 }

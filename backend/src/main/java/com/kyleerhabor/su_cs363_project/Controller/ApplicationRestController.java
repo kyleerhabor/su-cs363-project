@@ -59,6 +59,7 @@ public class ApplicationRestController {
   }
 
   @DeleteMapping("/titles/{id}")
+  @ResponseStatus(code = HttpStatus.NO_CONTENT)
   public void deleteTitle(@PathVariable UUID id) {
     service.deleteTitle(id);
   }

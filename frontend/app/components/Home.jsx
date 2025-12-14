@@ -149,9 +149,12 @@ function HomeContent() {
       try {
         // I know I can make this concurrent, so don't bug me about it.
         const dataResponse = await fetch(`${API_URL}/titles`)
-        const favoritesResponse = await fetch(`${API_URL}/users/${user}`);
         data = [dataResponse.ok, await dataResponse.json()];
-        favorites = [favoritesResponse.ok, await favoritesResponse.json()];
+
+        if (user !== null) {
+          const favoritesResponse = await fetch(`${API_URL}/users/${user}`);
+          favorites = [favoritesResponse.ok, await favoritesResponse.json()];
+        }
       } catch (error) {
         console.error(error);
         setData(null);
@@ -161,15 +164,36 @@ function HomeContent() {
       }
 
       const [dataOk, dataData] = data;
-      const [favoritesOk, favoritesData] = favorites;
 
-      if (!dataOk || !favoritesOk) {
+      if (!dataOk) {
         setData(null);
         setFavorites(null);
+
+        return;
       }
 
       setData(dataData);
-      setFavorites(favoritesData.user.titles.reduce((result, title) => result.set(title.title.id, title.id), new Map()));
+
+      let favs;
+
+      if (favorites === undefined) {
+        favs = new Map();
+      } else {
+        const [ok, data] = favorites;
+
+        if (!ok) {
+          setData(null);
+          setFavorites(null);
+
+          return;
+        }
+
+        favs = data.user.titles
+          .filter((title) => title.isFavorite)
+          .reduce((result, title) => result.set(title.title.id, title.id), new Map())
+      }
+
+      setFavorites(favs);
     })();
   }, [user]);
 
