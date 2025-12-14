@@ -4,6 +4,10 @@ This project models an application for a user to track their titles (think shows
 
 ## Install
 
+```sh
+git clone https://github.com/kyleerhabor/su-cs363-project.git && cd su-cs363-project
+```
+
 ### Backend
 
 ```sh
